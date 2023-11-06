@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+numpy = "*"
+scikit-learn = "*"
+matplotlib = "*"
+seaborn = "*"
+flask = "*"
+gunicorn = "*"
+
+[dev-packages]
+tqdm = "*"
+ipykernel = "*"
+notebook = "*"
+ipywidgets = "*"
+
+[requires]
+python_version = "3.10"
