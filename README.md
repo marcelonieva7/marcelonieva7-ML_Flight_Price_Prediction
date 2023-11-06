@@ -11,6 +11,7 @@ To achieve this, three machine learning models - Linear Regression, Decision Tre
 - [Installation](#installation)
 - [Usage](#usage)
 - [Containerization](#containerization)
+- [Cloud deployment](#Cloud_deployment)
 
 ## Data
 
@@ -148,3 +149,40 @@ docker run -it -p 9696:9696 price-prediction:latest
 ```
 
 This will start a container running the project on port 9696.
+
+## Cloud_Deployment
+
+### Publish a docker image to Google Container Registry
+
+**Pre-requisites**
+1. Docker installed
+2. GCloud SDK
+2. User or service account with access required to push to GCR.
+
+- Docker Registry Login with Google Cloud
+
+```bash
+gcloud auth configure-docker
+```
+
+- Tagging Docker Image
+
+```bash
+docker tag price-prediction gcr.io/<GCP_PROJECT_ID>/priceprediction:1.0
+```
+
+- Pushing Docker Image to gcr.io
+
+```bash
+docker push gcr.io/<GCP_PROJECT_ID>/priceprediction:1.0 
+```
+
+### Deploy container with Google Cloud Run
+
+```bash
+gcloud run deploy predict-app --image gcr.io/<GCP_PROJECT_ID>/priceprediction:1.0 --memory=2G --port=9696 --region us-central1 --platform managed --allow-unauthenticated --quiet
+```
+
+### URL
+
+Service URL: [https://predict-app-srblipudfq-uc.a.run.app](https://predict-app-srblipudfq-uc.a.run.app)
