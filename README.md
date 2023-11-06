@@ -107,7 +107,7 @@ Once the server is up and running, you can send a POST request to http://localho
 #### Example Usage
 
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{
+curl -X POST -H "Content-Type: application/json" -d '{
   "airline": "air_india",
   "flight": "ai-619",
   "source_city": "mumbai",
